@@ -1,0 +1,85 @@
+% Ce fichier main.tex est le fichier principal \`{a} partir duquel tout est g\'{e}n\'{e}r\'{e}
+% This file is the main file where the final document is generated
+\documentclass{these-dbl}
+
+% Fill the pdf metadata
+\hypersetup{
+%    pdfauthor   = {XYZ},
+%    pdftitle    = {Th\`{e}se de doctorat de XYZ},
+%    pdfsubject  = {Th\`{e}se de doctorat de XYZ},
+%    pdfkeywords = {mots-cl\'{e}s},
+}
+
+\geometry{vmargin=4.0cm}
+\addbibresource{./biblio/biblio.bib}
+
+\makeglossaries
+\input{./glossary}
+
+\begin{document}
+
+\input{./cover/front}
+
+
+\selectlanguage{french}
+
+\clearemptydoublepage
+\input{./acknowledgement/acknowledgement}
+
+\frontmatter
+\clearemptydoublepage
+\renewcommand{\contentsname}{Table des Matières}
+\tableofcontents %sommaire %table of content
+%\shorttableofcontents{Sommaire}{0}
+
+\clearemptydoublepage
+\listoffigures
+
+\clearemptydoublepage
+\listoftables
+
+\clearemptydoublepage
+\lstlistoflistings
+
+\clearemptydoublepage
+\input{./introduction/introduction}
+
+\clearemptydoublepage
+\input{./company_presentation/company_presentation}
+
+\clearemptydoublepage
+\input{./projects/projects}
+
+\clearemptydoublepage
+\input{./gantt/gantt}
+
+\clearemptydoublepage
+\backmatter
+\input{./conclusion/conclusion}
+
+
+% Chapitre pour la bibliographie
+\clearemptydoublepage
+\phantomsection % To have a correct link in the table of contents
+\addcontentsline{toc}{chapter}{Bibliographie}
+
+% nocite: Pour citer la totalit\'{e} des r\'{e}f\'{e}rences contenues dans le fichier biblio
+% nocite: In order to cite all the references included biblio
+\nocite{*}
+\printbibliography
+
+\clearemptydoublepage
+\printglossary[type=\acronymtype]
+
+\clearemptydoublepage
+\input{./appendix/appendix}
+
+
+\clearemptydoublepage
+% Pour avoir la quatrième de couverture sur une page paire
+% To have the back cover on an even page
+\cleartoevenpage[\thispagestyle{empty}]
+
+\input{./cover/back}
+
+\end{document}
