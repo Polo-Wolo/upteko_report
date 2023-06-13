@@ -228,7 +228,7 @@
   \begin{tikzpicture}[remember picture,overlay,line width=0mm]
     \node[xshift=6.7cm,yshift=2cm] {%
     \parbox{\textwidth}{%
-      $\vcenter{\hbox{\includegraphics[keepaspectratio,height=2cm]{./cover/logo_entreprise}}}$
+      $\vcenter{\hbox{\includegraphics[keepaspectratio,height=3cm]{./cover/logo_entreprise}}}$
       \hfill
       \hspace{3mm}
       $\vcenter{\hbox{\includegraphics[keepaspectratio,height=2cm,width=7cm]{./cover/logo_ENIB}}}$
