@@ -57,6 +57,11 @@
 \newcommand*{\selectfontbackcover}{\fontfamily{phv}\selectfont}   % Font style used in back cover 
 \newcommand*{\selectfontchapheads}{\fontfamily{phv}\selectfont} % Font style used chapter headings
 
+%%% FEATURE %%%
+% Redefine \texttt{} to include a background color
+\let\OldTexttt\texttt
+\renewcommand{\texttt}[1]{\colorbox{gray!20}{\OldTexttt{#1}}}
+%%% END %%%
 
 
 \newcommand\BackgroundPicfront{%
