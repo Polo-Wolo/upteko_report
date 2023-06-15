@@ -2,7 +2,7 @@
 
 \section{STM32 IMU}
 \subsection{PModNav}
-The purpose is to get the \texttt{roll}, \texttt{pitch} and \texttt{yaw} from the PModNav to plot a 3D visualization of the IMU. The final purpose of it is to create log files from the orientation and attitude of the drone in real-time. By combining data from accelerometers, gyroscopes and magnetometers, an IMU can provide information about the object’s position, orientation and angular velocity. This is crucial for tasks such as stabilizing the drone or object tracking.
+The purpose is to get the \texttt{roll}, \texttt{pitch} and \texttt{yaw} from the PModNav to plot a 3D visualization of the IMU. The final purpose of it is to create log files from the orientation and attitude of the drone in real-time. By combining data from accelerometers, gyroscopes and magnetometers, an IMU can provide information about the object's position, orientation and angular velocity. This is crucial for tasks such as safety deployement or drone tracking.
 The STM32-L4796ZG recovers the value of the sensors from the \texttt{PModNav} via \texttt{SPI Bus} and transmits them to the HMI via \texttt{UART} connection.
 \begin{center}
     \includegraphics[width=0.65\linewidth]{./projects/pmodnav/com.png}
