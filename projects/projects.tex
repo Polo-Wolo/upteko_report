@@ -68,6 +68,57 @@ Then click on \texttt{Connect} to start the serial communication. Every received
 % \end{center}
 
 \section{LogViewer}
+\subsection{Sensors tests}
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{./projects/logviewer/tower_evo_pixhawk.jpg}
+\end{center}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{|l||l|l|}
+    \hline
+                      & TowerEvo & Description                 \\
+    \hline
+    PRX\_ORIENT       & 0        & Default                     \\
+    PRX\_TYPE         & 6        & TeraRangerTowerEvo          \\
+    SERIAL\_BAUD      & 921600   & serial baud                 \\
+    SERIAL\_PROTOCOLE & 11       & Lidar 360 deg               \\
+    AVOID\_ANGLE      & 1300     & max  lean angle             \\
+    AVOID\_BEHAVE     & 1        & Stop when obstacle detected \\
+    AVOID\_DIST\_MAX  & 5        & max distance avoidance      \\
+    AVOID\_ENABLE     & 3        & Enable drone reaction       \\
+    AVOID\_MARGIN     & 3        & min distance avoidance      \\
+    \hline
+    \end{tabular}
+\end{table}
+
+% \begin{table}[t]
+%     \centering
+%     \begin{tabular}{|l|c|c|c|c|c|}
+%     \hline
+%     Product & 1 & 2 & 3 & 4 & 5\\
+%     \hline
+%     Price & 124.- & 136.- & 85.- & 156.- & 23.-\\
+%     Guarantee [years] & 1 & 2 & - & 3 & 1\\
+%     Rating & 89\% & 84\% & 51\% & & 45\%\\
+%     \hline
+%     \hline
+%     Recommended & yes & yes & no & no & no\\
+%     \hline
+%     \end{tabular}
+%     \caption{This is a table template}
+%     \label{tab:template}
+% \end{table}
+
+\begin{center}
+    \includegraphics[width=0.65\linewidth]{./projects/logviewer/mission_planner_tower_evo.png}
+\end{center}
+
+\subsection{Drone Integration}
+
+\subsection{Drone Flight}
+
+\subsection{Python Plotly Visualizer}
 
 \section{Collision avoidance SITL}
 
