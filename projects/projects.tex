@@ -211,5 +211,21 @@ Ardupilot supports different flight modes, navigation based on waypoints, and te
 Ardupilot is widely used in drones and other vehicles, and it has a supportive community and extensive documentation. In summary, Ardupilot is a versatile and customizable software suite for autonomous vehicle control.
 
 \subsection{Built-In Ardupilot collision avoidance}
+The collision avoidance feature in Ardupilot is designed to enhance the safety and reliability of these vehicles by detecting and avoiding potential collisions with obstacles or other aircraft.
+
+The collision avoidance system in Ardupilot relies on various sensors and algorithms to perceive the environment and make informed decisions about navigation. Some of the key components and techniques used in the Built-In Ardupilot collision avoidance include:
+
+\begin{itemize}
+    \item \underline{Sensor Inputs:} Ardupilot can interface with different types of sensors, including proximity sensors, lidar, sonar, and cameras. These sensors provide information about the surrounding environment and help in detecting obstacles.
+    \item \underline{Obstacle Detection:} The collision avoidance system processes the sensor data to identify potential obstacles in the flight path. This can include buildings, trees, other aircraft, or any other objects that may pose a risk of collision.
+    \item \underline{Path Planning:} Based on the environment map and the current position of the vehicle, Ardupilot generates a safe and collision-free path for the aircraft to follow. It considers factors such as obstacle proximity, vehicle speed, and maneuverability to calculate an optimal trajectory.
+    \item \underline{Collision Avoidance Algorithms:} Ardupilot employs sophisticated algorithms to predict the future movement of obstacles and determine the best course of action to avoid collisions. These algorithms take into account the dynamics of the vehicle and the obstacles, allowing the autopilot to adjust the flight path accordingly.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\linewidth]{./projects/ardupilot/sitl_overall.png}
+    \caption{Software-In-The-Loop overall schematics}
+\end{figure}
 
 \subsection{Collision Avoidance ROS2 Migration}
