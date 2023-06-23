@@ -31,6 +31,7 @@
 \RequirePackage{listings}
 \RequirePackage{eso-pic}
 \RequirePackage[toc, acronym]{glossaries}
+\RequirePackage{wrapfig}
 
 %Ou bien : \RequirePackage[top=4 cm, bottom=4 cm, left=3 cm, right=3 cm]{geometry} % On peut modifier ces valeurs pour augmenter ou r\'{e}duire les marges. Attention aux en-têtes de chapitres. 
 \RequirePackage{epigraph} % \cleartoevenpage
