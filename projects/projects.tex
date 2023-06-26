@@ -11,7 +11,7 @@ The STM32-L4796ZG recovers the value of the sensors from the \texttt{PModNav} vi
 \end{figure}
 
 \subsubsection{Hardware}
-The PModNav module is equipped with the \texttt{LSM9DS1}\cite{LSM9DS1_digilent_lib} sensor, offering 10-degrees-of-freedom (10-DOF) functionality. It integrates a 3-axis accelerometer, 3-axis gyroscope, 3-axis magnetometer, and an LPS25HB digital barometer. This comprehensive sensor suite allows users to obtain orientation-related data and determine the precise position and heading of the module. The module supports various full-scale options for linear acceleration, angular rate, and magnetic field measurements. It follows the Digilent Interface Specification Type 2A and utilizes a 12-pin Pmod connector with an SPI interface.
+The PModNav module is equipped with the \texttt{LSM9DS1}\cite{LSM9DS1_digilent_lib} sensor, offering 10-degrees-of-freedom (10-\gls{dof}) functionality. It integrates a 3-axis accelerometer, 3-axis gyroscope, 3-axis magnetometer, and an LPS25HB digital barometer. This comprehensive sensor suite allows users to obtain orientation-related data and determine the precise position and heading of the module. The module supports various full-scale options for linear acceleration, angular rate, and magnetic field measurements. It follows the Digilent Interface Specification Type 2A and utilizes a 12-pin Pmod connector with an SPI interface.
 
 \subsubsection{Software and Development Environment}
 The development environment for the PModNav project is STM32 CubeIDE. The documentation references project sources, including code snippets and libraries, such as the PModNav driver and Madgwick's filter implementation. 
@@ -51,12 +51,12 @@ $$ yaw = atan2(R_{12},R_{22}) $$
 
 
 \subsection{Graphical User Interface}
-Additionally, a graphical user interface (GUI) is provided, leveraging \texttt{PyQt5}\cite{pyqt5} and \texttt{PyOpenGL}\cite{pyopengl} modules. The GUI manages the main window and handles OpenGL object management. It offers features like port selection and serial communication. The received data is displayed in a textbox within the GUI, facilitating real-time monitoring and analysis.
-Here is how the GUI is threaded :
+Additionally, a graphical user interface \gls{gui} is provided, leveraging \texttt{PyQt5}\cite{pyqt5} and \texttt{PyOpenGL}\cite{pyopengl} modules. The \glsentrytext{gui} manages the main window and handles OpenGL object management. It offers features like port selection and serial communication. The received data is displayed in a textbox within the \glsentrytext{gui}, facilitating real-time monitoring and analysis.
+Here is how the \glsentrytext{gui} is threaded :
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\linewidth]{./projects/pmodnav/gui_threads.png}
-    \caption{Python GUI threads schematic}
+    \caption{Python \glsentrytext{gui} threads schematic}
 \end{figure}
 The use is rather simple for the communication configuration (\colorbox{cyan}{cyan box}) :
 \begin{itemize}
@@ -70,7 +70,7 @@ The use is rather simple for the communication configuration (\colorbox{cyan}{cy
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\linewidth]{./projects/pmodnav/gui_window.png}
-    \caption{Python GUI window screenshot}
+    \caption{Python \glsentrytext{gui} window screenshot}
 \end{figure}
 Then click on \texttt{Connect} to start the serial communication. Every received line appeared in the textBox (\colorbox{red}{red box}).
 
@@ -97,7 +97,7 @@ A few parameters need to be modified to enable the 8 distance sensors and their 
 \\ \\
 Here is the final configuration for a minimum effective distance of 3 meters between the drone and obstacles and a maximum effective distance of 5 meters :
 
-\begin{figure}[H]
+\begin{table}[H]
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \raggedright
@@ -118,7 +118,7 @@ Here is the final configuration for a minimum effective distance of 3 meters bet
             \hline
             \end{tabular}%
         }
-        \caption{Ardupilot flight controller configuration}
+        \caption{Ardupilot flight controller \gls{fc} configuration}
         \label{table:fc_config}
     \end{subfigure}
     \hfill
@@ -128,9 +128,7 @@ Here is the final configuration for a minimum effective distance of 3 meters bet
         \caption{Data acquisition acknowledgement}
     \end{subfigure}
     \caption{Ardupilot configuration \& data acknowledgement} 
-\end{figure}
-
-
+\end{table}
 
 
 \subsection{Sensors Integration and drone flight}
@@ -203,11 +201,6 @@ This way the data analysis is easy-to-use.
         \caption{Python LogViewer demo}
 \end{figure}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics{./projects/pmodnav/pmodnav_gui_record.gif}
-%     \caption{Python GUI window GIF}
-% \end{figure}
 
 \section{Collision avoidance SITL}
 \subsection{Environement description}
@@ -224,13 +217,13 @@ Users can model robots and their surroundings, integrate with the Robot Operatin
 In summary, Gazebo is a valuable tool for simulating and evaluating robotic systems before deploying them in real-world environments.
 \subsubsection{Ardupilot}
 % ardupilot %
-\texttt{Ardupilot} is open-source software used for controlling autonomous vehicles like drones. It includes firmware that runs on the vehicle's autopilot hardware, as well as ground control station software for mission planning and monitoring.
+\texttt{Ardupilot} is open-source software used for controlling autonomous vehicles like drones. It includes firmware that runs on the vehicle's autopilot hardware, as well as ground control station \gls{gcs} software for mission planning and monitoring.
 Ardupilot supports different flight modes, navigation based on waypoints, and telemetry for communication with the vehicle. It is compatible with various hardware platforms and can be customized and extended.
 Ardupilot is widely used in drones and other vehicles, and it has a supportive community and extensive documentation. In summary, Ardupilot is a versatile and customizable software suite for autonomous vehicle control.
 
 \subsection{Built-In Ardupilot collision avoidance}
 The collision avoidance feature in Ardupilot is designed to enhance the safety and reliability of these vehicles by detecting and avoiding potential collisions with obstacles or other aircraft.
-
+\break
 The collision avoidance system in Ardupilot relies on various sensors and algorithms to perceive the environment and make informed decisions about navigation. Some of the key components and techniques used in the Built-In Ardupilot collision avoidance include:
 
 \begin{itemize}
@@ -251,12 +244,27 @@ The collision avoidance system in Ardupilot relies on various sensors and algori
 
 The aim of this task is to migrate a project from the old version of Robot Operating System (ROS) to the new one ROS2.
 
-\begin{wrapfigure}{l}{0.6\textwidth}
+\begin{wrapfigure}[12]{l}{0.5\textwidth}
     \centering
-    \includegraphics[width=0.5\textwidth]{./projects/ardupilot/ca_flowchart.png}
+    \includegraphics[width=0.4\textwidth]{./projects/ardupilot/ca_flowchart.png}
     \caption{Collision Avoidance flowchart}
-  \end{wrapfigure}
-Oops, I just tried compiling it.  Apparently I need to include a bit more.  I could go on a bit
-and tell you more secrets of image placement.  Did you know that you can use the \texttt{center}
-environment around the \texttt{includeimage} to make things look even prettier?  It's true.  The
-control which \LaTeX provides with it is nice.
+    \label{fig:ca-flowchart}
+\end{wrapfigure}
+
+\hfill \break
+
+The Figure~\ref{fig:ca-flowchart} represent how the collision avoidance logic is working.
+It's basically a loop that covers all the waypoints to reach the final destination.The data acquired by the distance sensors are continuously recorded to enable the algorithm to detect obstacles and change the speed and direction of the drone in real time.
+
+\newpage
+
+\subsection{Drone blackbox}
+Drones, or unmanned aerial vehicles, have gained significant popularity and application across various industries. As drones become more advanced and complex, it is crucial to incorporate reliable systems for data logging and analysis. One such system is a blackbox, which serves as a flight data recorder for drones. Here are the reason of having a blackbox on a drone :
+\begin{itemize}
+    \item \underline{Flight Data Logging:} A blackbox records various flight parameters and sensor data during drone flights. This data can include information such as GPS coordinates, altitude, speed, battery voltage, motor RPM, control inputs, and more. Analyzing this data can provide valuable insights into the drone's performance, diagnose issues, and improve flight characteristics.
+    \item \underline{Accident Investigation:} In the event of a drone crash or incident, a blackbox can provide crucial data for accident investigation and analysis. It helps in understanding the sequence of events leading up to the accident, identifying any anomalies or failures, and determining the cause of the incident. This information can be used for troubleshooting, improving safety measures, and preventing similar incidents in the future.
+    \item \underline{System Optimization:} By analyzing the flight data recorded by the blackbox, drone manufacturers and developers can optimize the drone's performance, stability, and efficiency. They can fine-tune flight control algorithms, evaluate sensor accuracy, and identify areas for improvement in terms of power consumption, aerodynamics, and overall system design.
+    \item \underline{Regulatory Compliance:} In some countries, drone operations may be subject to regulatory requirements. Flight data recording and analysis can help demonstrate compliance with regulations, such as maintaining safe distances from restricted areas or operating within altitude limits. The recorded data can serve as evidence of adherence to guidelines and regulations set by aviation authorities.
+\end{itemize}
+\hfill \break
+Overall, using a blackbox on a drone provides valuable data for performance analysis, troubleshooting, safety improvement, and compliance with regulations. It allows drone operators, manufacturers, and researchers to gain insights into flight characteristics and make informed decisions for enhancing drone performance and safety.

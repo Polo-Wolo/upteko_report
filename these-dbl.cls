@@ -8,8 +8,6 @@
 \RequirePackage{amsmath, amssymb}
 \RequirePackage[usenames,dvipsnames]{color} % pour les couleurs
 \RequirePackage{textcomp}
-\RequirePackage{subcaption}
-\RequirePackage{float}
 \RequirePackage{titlesec}
 \RequirePackage{parcolumns}
 \RequirePackage{multicol}
@@ -32,6 +30,9 @@
 \RequirePackage{eso-pic}
 \RequirePackage[toc, acronym]{glossaries}
 \RequirePackage{wrapfig}
+\RequirePackage{lipsum}
+\RequirePackage{subcaption}
+\RequirePackage{float}
 
 %Ou bien : \RequirePackage[top=4 cm, bottom=4 cm, left=3 cm, right=3 cm]{geometry} % On peut modifier ces valeurs pour augmenter ou r\'{e}duire les marges. Attention aux en-têtes de chapitres. 
 \RequirePackage{epigraph} % \cleartoevenpage
@@ -86,7 +87,7 @@
 
 % configure
 \renewcommand{\lstlistingname}{Code}% Listing -> Algorithm
-\renewcommand{\lstlistlistingname}{Liste Of \lstlistingname s}
+\renewcommand{\lstlistlistingname}{List Of \lstlistingname s}
 
 % Define commands to set fonts throughout the document
 \newcommand*{\selectfontfrontcover}{\fontfamily{phv}\selectfont}  % Font style used in front cover 
@@ -249,6 +250,10 @@
 \newcommand{\dates}[1]{\gdef\@dates{#1}}
 \dates{}
 
+%%% Mail
+\newcommand{\mail}[1]{\gdef\@mail{#1}}
+\mail{}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -310,6 +315,7 @@
     Entreprise :          & \@entreprise \\
     \'{E}tablissement :   & \'{E}cole Nationale d'Ingénieurs de Brest (ENIB) \\
     Dates :   & \@dates \\
+    Mail étudiant :   & \@mail \\
     \end{tabular}
     \end{small}
     }
@@ -400,8 +406,10 @@
     \fancyhead[LE]{} % \leftmark = chapitre courant
     \fancyfoot[C]{\thepage}               % marque la page au centre
 
-} 
-
+}
+%%% FEATURE avoid fancyhdr warnings%%%
+\setlength{\headheight}{14pt}
+%%% END %%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
