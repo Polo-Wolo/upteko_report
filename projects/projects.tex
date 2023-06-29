@@ -245,7 +245,7 @@ Overall, \gls{ros2} provides a powerful and versatile platform for developing ro
 \subsubsection{Gazebo}
 % gazebo %
 \texttt{Gazebo} is an open-source 3D simulation environment for robotics. It allows developers to create virtual worlds where they can simulate and test robots. Gazebo provides realistic physics-based simulations, visualizes the environment in 3D, and simulates sensors like cameras and \gls{lidar}s.
-Users can model robots and their surroundings, integrate with the Robot Operating System (\gls{ros}), and extend its functionality using plugins. Gazebo has a supportive community and offers a wide range of resources for developers.
+Users can model robots and their surroundings, integrate with the \gls{ros}, and extend its functionality using plugins. Gazebo has a supportive community and offers a wide range of resources for developers.
 In summary, Gazebo is a valuable tool for simulating and evaluating robotic systems before deploying them in real-world environments.
 \subsubsection{Ardupilot}
 % ardupilot %
@@ -253,7 +253,7 @@ In summary, Gazebo is a valuable tool for simulating and evaluating robotic syst
 Ardupilot supports different flight modes, navigation based on waypoints, and telemetry for communication with the vehicle. It is compatible with various hardware platforms and can be customized and extended.
 Ardupilot is widely used in drones and other vehicles, and it has a supportive community and extensive documentation. In summary, Ardupilot is a versatile and customizable software suite for autonomous vehicle control.
 
-\subsection{Built-In Ardupilot collision avoidance}
+\subsection{Software-In-The-Loop Ardupilot collision avoidance}
 The collision avoidance feature in Ardupilot is designed to enhance the safety and reliability of these vehicles by detecting and avoiding potential collisions with obstacles or other aircraft.
 \break
 The collision avoidance system in Ardupilot relies on various sensors and algorithms to perceive the environment and make informed decisions about navigation. Some of the key components and techniques used in the Built-In Ardupilot collision avoidance include:
@@ -264,17 +264,28 @@ The collision avoidance system in Ardupilot relies on various sensors and algori
     \item \underline{Path Planning:} Based on the environment map and the current position of the vehicle, Ardupilot generates a safe and collision-free path for the aircraft to follow. It considers factors such as obstacle proximity, vehicle speed, and maneuverability to calculate an optimal trajectory.
     \item \underline{Collision Avoidance Algorithms:} Ardupilot employs sophisticated algorithms to predict the future movement of obstacles and determine the best course of action to avoid collisions. These algorithms take into account the dynamics of the vehicle and the obstacles.
 \end{itemize}
-
+\hfill \break
+\gls{sitl} is a testing and simulation technique used in software development and engineering. It involves the integration of software components into a simulated environment or virtual platform to assess their functionality and behavior.
+Using it, developers can identify and resolve potential issues and bugs in the software early in the development cycle, reducing costs and risks associated with late-stage failures.
+\hfill \break
+The Figure~\ref{fig:sitl-overall} represent the non-detailed structure of the work environment and the communication between each of its components :
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{./projects/ardupilot/sitl_overall.png}
     \caption{Software-In-The-Loop overall chart\cite{sitl_explained}}
+    \label{fig:sitl-overall}
 \end{figure}
 
+It took a number of steps to obtain a vehicle that could be used in simulation. All the control of the motors and their physical action in Gazebo is already done, but with the integration of the TeraTowerEvo distance sensors.
+\\ 
+For the sensors to work as realistically as possible, they need to be parameterized in such a way that the minimum and maximum distances correspond to the datasheet, that the angle of vision is also the same, and to add a little noise to the measurements captured.
+\\ \\
+Once everything is set up, the data can be easily analyzed in the integrated ROS interface (cf. Figure~\ref{fig:drone-gazebo}):
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{./projects/ardupilot/gazebo_drone.png}
     \caption{Drone with TowerEvo in Gazebo environment}
+    \label{fig:drone-gazebo}
 \end{figure}
 
 \subsection{Collision Avoidance ROS2 Migration}
@@ -282,7 +293,7 @@ The collision avoidance system in Ardupilot relies on various sensors and algori
 
 The aim of this task is to migrate a project from the old version of Robot Operating System (\gls{ros}) to the new one \gls{ros2}.
 
-\begin{wrapfigure}[16]{l}{0.55\textwidth}
+\begin{wrapfigure}{l}{0.55\textwidth}
     \centering
     \includegraphics[width=0.45\textwidth]{./projects/ardupilot/ca_flowchart.png}
     \caption{Collision Avoidance flowchart}
@@ -290,21 +301,17 @@ The aim of this task is to migrate a project from the old version of Robot Opera
 \end{wrapfigure}
 
 \hfill \break
-
 The Figure~\ref{fig:ca-flowchart} represent how the collision avoidance logic is working.
 It's basically a loop that covers all the waypoints to reach the final destination.The data acquired by the distance sensors are continuously recorded to enable the algorithm to detect obstacles and change the speed and direction of the drone in real time.
 As soon as data are acquired, this action chain start : \texttt{GetObstacleInfo}, \texttt{Algorithm Solve}, \texttt{ComputeVelocity} and \texttt{PublishVelocity}.
-\newpage
-
+\hfill \break
+\hfill \break
 It use the \texttt{potential field method}\cite{potential_field}, it's an algorithm used in robotics for motion planning. It represents the environment as a field of attractive and repulsive potentials. The agent is guided towards the goal by attractive potentials and repelled by repulsive potentials generated by obstacles. The agent follows the gradient of the potential field to navigate towards the goal while avoiding obstacles.
 It is a simple and intuitive approach but can have limitations in complex environments and local minima trapping. Extensions and modifications exist to address these challenges.
 
-\subsubsection{ ROS migration}
+\subsubsection{ROS migration}
 Migration is a complex process that requires a thorough understanding of the environment in which you're moving and the environment in which you're moving. What's more, programming languages (python here) often evolve between 2 ROS releases, so language errors add to the difficulty.
 I successfully migrate all the files as espected but unfortunatly after 3 weeks working on this tasks, I wasnt able to debug and test the project due to the environment complexity.
 \\ \\
 My colleagues are way more experienced in ROS2 and migration, so we decided together to stop my part here and let them continue to debug and test the project.\\
 I did, however, learn a lot of principles, such as \gls{qos} and \gls{mavlink} message communication, which are essential for flying robotics projects.
-
-
-TEST
