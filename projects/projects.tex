@@ -27,7 +27,7 @@ $$ Q = [q_0, q_1, q_2, q_3 ] $$
 $$ Q = \big[cos(\frac{\theta}{2}), a.sin(\frac{\theta}{2}), b.sin(\frac{\theta}{2}), c.sin(\frac{\theta}{2})\big] $$
 At each \texttt{Te}, we can calculate the new value of the quaternion vector from the velocity :
 $$ Q_{k+1} = Q_k+\frac{1}{2}.T_e.\omega_k.Q_k $$
-For cheap IMUs, it is unavoidable to perform a data fusion to make the accelerometer compensate for the gyroscope defect. If using a Kalmann filter is possible, there are other (faster) algorithms like Madgwick's. The idea is to compensate for the gyroscope measurement error by modulating its values by the result of a comparison between an estimate of the gravity field and the measured gravity field (with the accelerometer).
+For cheap IMUs, it is unavoidable to perform a data fusion to make the accelerometer compensate for the gyroscope defect. If using a \texttt{Kalman filter}\cite{kalman_filter} is possible, there are other (faster) algorithms like Madgwick's. The idea is to compensate for the gyroscope measurement error by modulating its values by the result of a comparison between an estimate of the gravity field and the measured gravity field (with the accelerometer).
 \hfill \break
 \boitesimple{\underline{Note:} Only 6 \gls{dof} from the accelerometer and gyroscope have been use to this project due to too sensitive and hard to calibrate data from the magnetometer}
 
@@ -124,13 +124,13 @@ The best way to implement it is to use \gls{rtos}, they provide a highly accurat
     \hline
     Task Name & Frequency {[}Hz{]} & Duration {[}ms{]} & Priority \\ \hline
     IMU\_Step & 100 Hz             & $\sim$1 ms        & High     \\ \hline
-    SD\_Log   & 4 Hz               & $\sim$175 ms      & Low      \\ \hline
+    Data\_Log   & 4 Hz             & $\sim$175 ms      & Low      \\ \hline
     \end{tabular}
     \caption{\gls{rtos} tasks description}
     \label{table:tasks_details}
 \end{table}
 
-Beacause \texttt{IMU Step}'s priority is higher than \texttt{SD Log}'s priority and I want it to run at 100 Hz, I decided to use a semaphore on timer interuption to release the \texttt{IMU Step} task.
+Beacause \texttt{IMU\_Step}'s priority is higher than \texttt{Data\_Log}'s priority and I want it to run at 100 Hz, I decided to use a semaphore on timer interuption to release the \texttt{IMU\_Step} task.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{./projects/pmodnav/rtos_overall.png}
@@ -144,6 +144,17 @@ Here is the temporal plot of both tasks :
     \includegraphics[width=0.75\linewidth]{./projects/pmodnav/osci_screen.png}
     \caption{Oscilloscope tasks measurements}
     \label{fig:osci_tasks}
+\end{figure}
+
+\boitesimple{\underline{Note:}Everything work has planned up to 200 Hz for the IMU and the UART data log. However, it will be a big improvement to add a SDCard data storage to get all data}
+
+The next improvment is to add the SDCard store feature, here is a Figure~\ref{fig:project_store} to how the byte communication should be done for the next step.
+It's pretty simple : all typed data are converted to bytes to reduce the memory size of it. The \texttt{UART} connection works and allow to send all data at $\sim$50 Hz and the SDCard store system should use the \texttt{SPI} or \texttt{SDMMC} connection.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{./projects/pmodnav/project_store.png}
+    \caption{STM32 data communication and storage}
+    \label{fig:project_store}
 \end{figure}
 
 \section{LogViewer}

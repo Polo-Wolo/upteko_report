@@ -335,25 +335,25 @@
 
 \newcommand{\subject}[1]{%
 \vspace{0.5cm}
-\noindent{\smallTwelve \textbf{Sujet : }#1}
+\noindent{\smallTwelve \textbf{Subject : }#1}
 }
 
 \newcommand{\keywords}[1]{%
 \vspace{0.5cm}
-\noindent{\smallTwelve \textbf{Mot cl\'{e}s : }#1}
+\noindent{\smallTwelve \textbf{Key words : }#1}
 }
 
 \newcommand{\compagny}[1]{%
 \vspace{0.5cm}
 \begin{spacing}{1}
-	\noindent\smallTwelve \textbf{Entreprise : }#1
+	\noindent\smallTwelve \textbf{Company : }#1
 \end{spacing}
 }
 
 \newcommand{\resume}[1]{%
 \vspace{0.5cm}
 \begin{spacing}{1}
-	\noindent\smallTwelve \textbf{Travaux Réalisés : }#1
+	\noindent\smallTwelve \textbf{Work done : }#1
 \end{spacing}
 }
 
