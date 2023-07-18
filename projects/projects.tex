@@ -152,6 +152,13 @@ The next improvment is to add the SDCard store feature, here is a Figure~\ref{fi
 It's pretty simple : all typed data are converted to bytes to reduce the memory size of it. The \texttt{UART} connection works and allow to send all data at $\sim$50 Hz and the SDCard store system should use the \texttt{SPI} or \texttt{SDMMC} connection.
 \begin{figure}[H]
     \centering
+    \includegraphics[width=\linewidth]{./projects/pmodnav/frame_description.png}
+    \caption{Data frame as byte format}
+    \label{fig:frame_description}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.75\linewidth]{./projects/pmodnav/project_store.png}
     \caption{STM32 data communication and storage}
     \label{fig:project_store}
