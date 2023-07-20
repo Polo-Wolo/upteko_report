@@ -33,6 +33,33 @@
 \RequirePackage{lipsum}
 \RequirePackage{subcaption}
 \RequirePackage{float}
+\RequirePackage{xcolor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 
 %Ou bien : \RequirePackage[top=4 cm, bottom=4 cm, left=3 cm, right=3 cm]{geometry} % On peut modifier ces valeurs pour augmenter ou r\'{e}duire les marges. Attention aux en-têtes de chapitres. 
 \RequirePackage{epigraph} % \cleartoevenpage
@@ -295,27 +322,27 @@
     \displayLogos
     \selectfontfrontcover
     \vskip 6em~\\
-    {\HugeTwelve\textsc{Rapport de Stage \@semester}}
+    {\HugeTwelve\textsc{Internship report Semester 8}}
     \vskip 2em~\\
-    {\LARGETwelve Pr\'{e}sent\'{e} par \textbf{\@author}}
+    {\LARGETwelve Presented by \textbf{\@author}}
     \vskip 2em~\\ 
     {\LargeTwelve \textbf{\@title}}
     \vfill ~\\
     {\smallTwelve
-    \textbf{Rapport pr\'{e}sent\'{e} et soutenu \`{a} \@lieu, le \@date  \\~\\}
+    \textbf{Presented and supported at \@lieu, the \@date  \\~\\}
     }
     \begin{small}
     \@jury
     
     \vskip 4em~\\ 
-    {\smallTwelve \textbf{Informations Administratives :}}\\
+    {\smallTwelve \textbf{Administrative information :}}\\
     \newline
     \footnotesizeTwelve
     \begin{tabular}{@{}ll}
-    Entreprise :          & \@entreprise \\
-    \'{E}tablissement :   & \'{E}cole Nationale d'Ingénieurs de Brest (ENIB) \\
+    Company :          & \@entreprise \\
+    School :   & \'{E}cole Nationale d'Ingénieurs de Brest (ENIB) \\
     Dates :   & \@dates \\
-    Mail étudiant :   & \@mail \\
+    Student mail :   & \@mail \\
     \end{tabular}
     \end{small}
     }

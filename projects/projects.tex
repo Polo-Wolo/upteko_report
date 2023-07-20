@@ -42,15 +42,6 @@ I decided to use the most popular open source algorithm to compute rotations, th
     \includegraphics[width=0.9\linewidth]{./projects/pmodnav/madgwick_applied.png}
     \caption{Data transform schematic}
 \end{figure}
-% $$ R_{12} = 2.(q_1.q_2+q_0.q_3) $$
-% $$ R_{22} = q_0^2+q_1^2-q_2^2-q_3^2 $$
-% $$ R_{31} = 2.(q_0.q_1+q_2.q_3) $$
-% $$ R_{32} = 2.(q_1.q_3-q_0.q_2) $$
-% $$ R_{33} = q_0^2-q_1^2-q_2^2+q_3^2 $$
-% Calculation of the Euler Angles from the rotation matrix :
-% $$ roll = atan2(R_{31},R_{33}) $$
-% $$ pitch = asin(R_{32}) $$
-% $$ yaw = atan2(R_{12},R_{22}) $$
 
 Calculation of the Euler Angles from the rotation matrix :
 
@@ -106,7 +97,7 @@ Then click on \texttt{Connect} to start the serial communication. Every received
         \caption{3D IMU Visualizer demo}
 \end{figure}
 
-\subsection{RTOS}
+\subsection{Real-Time Operating System}
 Drones, or unmanned aerial vehicles, have gained significant popularity and application across various industries. As drones become more advanced and complex, it is crucial to incorporate reliable systems for data logging and analysis. One such system is a blackbox, which serves as a flight data recorder for drones. Here are the reason of having a blackbox on a drone :
 \begin{itemize}
     \item \underline{Flight Data Logging:} A blackbox records various flight parameters and sensor data during drone flights. This data can include information such as GPS coordinates, altitude, speed, battery voltage, motor RPM, control inputs, and more. Analyzing this data can provide valuable insights into the drone's performance, diagnose issues, and improve flight characteristics.
@@ -148,6 +139,7 @@ Here is the temporal plot of both tasks :
 
 \boitesimple{\underline{Note:}Everything work has planned up to 200 Hz for the IMU and the UART data log. However, it will be a big improvement to add a SDCard data storage to get all data}
 
+\subsubsection{SD Card handler}
 The next improvment is to add the SDCard store feature, here is a Figure~\ref{fig:project_store} to how the byte communication should be done for the next step.
 It's pretty simple : all typed data are converted to bytes to reduce the memory size of it. The \texttt{UART} connection works and allow to send all data at $\sim$50 Hz and the SDCard store system should use the \texttt{SPI} or \texttt{SDMMC} connection.
 \begin{figure}[H]
