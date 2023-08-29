@@ -6,14 +6,17 @@ marp: true
 </style>
 
 <!-- _footer: p9walcza@enib.fr -->
-
-# ENIB **theme for Marp presentation**
-
-ENIB: https://www.enib.fr/fr/
-MARP: https://marp.app/
-
 ![bg vertical left:45% 45%](./images/ENIB-logo-et-signature-cmjn.png)
 ![bg left:45% 45%](./images/logo_entreprise.png)
+
+# Internship Semester 8
+### **Assistant engineering internship**
+
+ENIB : https://www.enib.fr/
+Upteko ApS: https://www.upteko.com/
+
+
+
 
 ---
 
